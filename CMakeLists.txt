@@ -15,11 +15,13 @@
 cmake_minimum_required(VERSION 3.19)
 Project(InkStrokeModeler VERSION 0.1.0 LANGUAGES CXX)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -stdlib=libc++ -std=c++20")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -stdlib=libc++ -std=c++20 -mcrc32")
 
 if(CMAKE_SOURCE_DIR STREQUAL PROJECT_SOURCE_DIR)
   set(CMAKE_CXX_STANDARD 20)
   set(CMAKE_CXX_STANDARD_REQUIRED ON)
+  set(CMAKE_C_COMPILER   "clang")
+  set(CMAKE_CXX_COMPILER "clang++")
   option(INK_STROKE_MODELER_BUILD_TESTING "Build tests and testonly libraries" ON)
   option(INK_STROKE_MODELER_ENABLE_INSTALL "Enable install rule" ON)
 else()
