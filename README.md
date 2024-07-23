@@ -1,4 +1,4 @@
-# Ink Stroke Modeler
+# Ink StylusStroke Modeler
 
 [![BazelTest](https://github.com/google/ink-stroke-modeler/actions/workflows/bazel-test.yaml/badge.svg)](https://github.com/google/ink-stroke-modeler/actions/workflows/bazel-test.yaml)
 [![CMakeTest](https://github.com/google/ink-stroke-modeler/actions/workflows/cmake-test.yaml/badge.svg)](https://github.com/google/ink-stroke-modeler/actions/workflows/cmake-test.yaml)
@@ -18,14 +18,14 @@ use the [GoogleTest](https://google.github.io/googletest/) framework.
 
 ### Bazel
 
-Ink Stroke Modeler can be built and the tests run from the GitHub repo root
+Ink StylusStroke Modeler can be built and the tests run from the GitHub repo root
 with:
 
 ```shell
 bazel test ...
 ```
 
-To use Ink Stroke Modeler in another Bazel project, put the following in the
+To use Ink StylusStroke Modeler in another Bazel project, put the following in the
 `MODULE.bazel` file to download the code from GitHub head and set up
 dependencies:
 
@@ -41,12 +41,12 @@ git_repository(
 
 If you want to depend on a specific version, you can specify a commit in
 [`git_repository`](https://bazel.build/rules/lib/repo/git#git_repository)
-instead of a branch. Or if you want to use a local checkout of Ink Stroke
+instead of a branch. Or if you want to use a local checkout of Ink StylusStroke
 Modeler instead, use the
 [`local_repository`](https://bazel.build/reference/be/workspace#local_repository)
 workspace rule instead of `git_repository`.
 
-Since Ink Stroke Modeler requires C++20, it must be built with
+Since Ink StylusStroke Modeler requires C++20, it must be built with
 `--cxxopt='-std=c++20'` (or similar indicating a newer version). You can put the
 following in your project's `.bazelrc` to use this by default:
 
@@ -65,7 +65,7 @@ Then you can include the following in your targets' `deps`:
 
 ### CMake
 
-Ink Stroke Modeler can be built and the tests run from the GitHub repo root
+Ink StylusStroke Modeler can be built and the tests run from the GitHub repo root
 with:
 
 ```shell
@@ -74,7 +74,7 @@ cmake --build .
 ctest
 ```
 
-To use Ink Stroke Modeler in another CMake project, you can add the project as a
+To use Ink StylusStroke Modeler in another CMake project, you can add the project as a
 submodule:
 
 ```shell
@@ -113,9 +113,9 @@ in CMake.
 
 ### CMake Install
 
-Ink Stroke Modeler is intended to be built into consumers from source. But
+Ink StylusStroke Modeler is intended to be built into consumers from source. But
 sometimes a packaged version is needed, for example to integrate with other
-build systems that wrap CMake. To test the packaging and export of Ink Stroke
+build systems that wrap CMake. To test the packaging and export of Ink StylusStroke
 Modeler targets, you can install the dependencies with something like:
 
 ```shell
@@ -142,7 +142,7 @@ library paths.
 
 ## Usage
 
-The Ink Stroke Modeler API is in the namespace `ink::stroke_model`. The primary
+The Ink StylusStroke Modeler API is in the namespace `ink::stroke_model`. The primary
 surface of the API is the `StrokeModeler` class, found in `stroke_modeler.h`.
 You'll also simple data types and operators in `types.h`, and the parameters
 which determine the behavior of the model in `params.h`.
@@ -540,7 +540,7 @@ s_j & = s_{j - 1} + \Delta_j v_j
 
 Finally, we construct tip state $$q_j = \{s_j, i_j^t, v_j\}.\square$$
 
-#### Stroke End
+#### StylusStroke End
 
 The position modeling algorithm, like many real-time smoothing algorithms, tends
 to trail behind the raw inputs by some distance. At the end of the stroke, we
@@ -611,7 +611,7 @@ timestamp of raw input as it is received by the model. The model's most recent
 tip state is given to the predictor when the predicted tip states are
 constructed.
 
-#### Stroke End Predictor
+#### StylusStroke End Predictor
 
 The `StrokeEndPredictor` constructs a prediction using **algorithm #4** to model
 what the stroke would be if the last raw input had been a `kUp`, letting
